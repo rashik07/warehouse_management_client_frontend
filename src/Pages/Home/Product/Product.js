@@ -1,16 +1,42 @@
-import React from 'react';
+import React from "react";
+import { Avatar, Card, Col } from "antd";
+import {  useNavigate } from "react-router-dom";
+import { Button } from "antd/lib/radio";
+
 
 const Product = ({ product }) => {
-    const { _id, name, quantity } = product;
-    return (
-        <div className='service'>
+  const { _id, name, quantity,img } = product;
+  const { Meta } = Card;
+    const navigate = useNavigate();
+  const navigateToProductDetail= (id) => {
+    navigate(`/productDetails/${id}`)
+  }
+  return (
+    <Col  xs={{ span: 20 }} lg={{ span: 6, offset: 2 }} style={{marginBottom:"10px"}}>
+     
+      <Card
+        style={{
+          width: 300,
+       
+        }}
+        cover={
+          <img
+            alt="example"
+            src={img}
+          />
+        }
+      >
+        <Meta
+    
+          title={name}
+          description={quantity}
+        />
+        <Button onClick={() => navigateToProductDetail(_id)} className='btn btn-primary'> {name}</Button>
+      </Card>
 
-            <h2>{name}</h2>
-            <p>Quantity: {quantity}</p>
-
-            {/* <button onClick={() => navigateToServiceDetail(_id)} className='btn btn-primary'>Book: {name}</button> */}
-        </div>
-    );
+      
+    </Col>
+  );
 };
 
 export default Product;
