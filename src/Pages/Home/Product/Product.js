@@ -31,7 +31,7 @@ const Product = ({ product }) => {
           title={name}
           description={quantity}
         />
-        <Button onClick={() => navigateToProductDetail(_id)} className='btn btn-primary'> {name}</Button>
+        <Button onClick={() => navigateToProductDetail(_id)} className='btn btn-primary'> Update</Button>
       </Card>
 
       
