@@ -1,10 +1,17 @@
 import React from 'react';
-
+import { Layout, Menu } from 'antd';
 const Footer = () => {
+    const { Header, Content, Footer, Sider } = Layout;
     return (
-        <footer>
-            this is footer
-        </footer>
+        <Footer
+        style={{
+          textAlign: 'center',
+          background:"#001529",
+          color: "white"
+        }}
+      >
+        Ant Design ©2018 Created by Ant UED
+      </Footer>
     );
 };
 
