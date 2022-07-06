@@ -1,37 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Checkbox, Form, Input, Layout } from "antd";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Social_Login from "./Social_Login";
 const Login = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    let from = location.state?.from?.pathname || "/";
-    let errorElement;
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
+  let from = location.state?.from?.pathname || "/";
+  let errorElement;
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
-  
-    if (user) {
-        navigate(from, { replace: true });
-    }
+  if (user) {
+    navigate(from, { replace: true });
+  }
+  // if (user) {
+  //     navigate(from, { replace: true });
+  // }
 
-    if (error) {
-        errorElement = <p style={{color:"red"}}>Error: {error?.message}</p>
-    }
+  if (error) {
+    errorElement = <p style={{ color: "red" }}>Error: {error?.message}</p>;
+  }
 
-  
-
-    const navigateRegister = event => {
-        navigate('/register');
-    }
-
+  const navigateRegister = (event) => {
+    navigate("/register");
+  };
 
   const onFinish = (values) => {
     signInWithEmailAndPassword(values.email, values.password);
@@ -101,7 +96,10 @@ const Login = () => {
                 <Input.Password />
               </Form.Item>
               <p>
-                New Here? <Link to="/registration" onClick={navigateRegister}>Please Register</Link>
+                New Here?{" "}
+                <Link to="/registration" onClick={navigateRegister}>
+                  Please Register
+                </Link>
               </p>
               <Form.Item
                 wrapperCol={{
@@ -114,8 +112,8 @@ const Login = () => {
                 </Button>
               </Form.Item>
             </Form>
-          {errorElement}
-           <Social_Login></Social_Login>
+            {errorElement}
+            <Social_Login></Social_Login>
           </div>
         </Content>
       </Layout>

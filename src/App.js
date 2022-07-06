@@ -11,6 +11,8 @@ import Headers from './Pages/HeaderFooter/Headers';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import Login from './Pages/Login_Registration/Login';
 import Registration from './Pages/Login_Registration/Registration';
+import RequreAuth from './Pages/Login_Registration/RequreAuth';
+import AddProduct from './Pages/AddProduct/AddProduct';
 
 function App() {
 
@@ -24,8 +26,9 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
          
-          <Route path='/productDetails/:product_id' element={<ProductDetails></ProductDetails>}></Route>
-          <Route path='/manage' element={<ManageInventory></ManageInventory>}></Route>
+          <Route path='/productDetails/:product_id' element={<RequreAuth> <ProductDetails></ProductDetails></RequreAuth> }></Route>
+          <Route path='/manage' element={<RequreAuth><ManageInventory></ManageInventory></RequreAuth>}></Route>
+          <Route path='/addProduct' element={<RequreAuth><AddProduct></AddProduct></RequreAuth>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/registration' element={<Registration></Registration>}></Route>
           

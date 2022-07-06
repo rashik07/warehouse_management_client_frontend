@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Divider, Popconfirm, Table } from "antd";
 import { Layout, Menu } from "antd";
+import { Link } from "react-router-dom";
 
 const ManageInventory = () => {
   const [products, setProducts] = useState([]);
@@ -71,7 +72,9 @@ const ManageInventory = () => {
             }}
           >
             <h1>All Products</h1>
-            <Button type="primary" style={{float: "right",margin:"10px"}}>Add Product</Button>
+            <Button type="primary" style={{ float: "right", margin: "10px" }}>
+              <Link to="/addProduct">Add Product</Link>
+            </Button>
             <Table columns={columns} dataSource={products} />
           </div>
         </Content>
