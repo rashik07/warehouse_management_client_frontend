@@ -9,6 +9,8 @@ import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import Headers from './Pages/HeaderFooter/Headers';
 import { Breadcrumb, Layout, Menu } from 'antd';
+import Login from './Pages/Login_Registration/Login';
+import Registration from './Pages/Login_Registration/Registration';
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
          
           <Route path='/productDetails/:product_id' element={<ProductDetails></ProductDetails>}></Route>
           <Route path='/manage' element={<ManageInventory></ManageInventory>}></Route>
+          <Route path='/login' element={<Login></Login>}></Route>
+          <Route path='/registration' element={<Registration></Registration>}></Route>
           
 
         </Routes>
