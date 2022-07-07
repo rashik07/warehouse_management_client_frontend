@@ -21,6 +21,9 @@ const Headers = () => {
         <Menu.Item>
           <Link to="/manage">Manage Inventories</Link>
         </Menu.Item>
+        <Menu.Item>
+          <Link to="/blogs">Blogs</Link>
+        </Menu.Item>
         {user ? (
           <Menu.Item>
             <Button onClick={handleSignOut}>sign out</Button>

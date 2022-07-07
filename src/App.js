@@ -13,6 +13,8 @@ import Login from './Pages/Login_Registration/Login';
 import Registration from './Pages/Login_Registration/Registration';
 import RequreAuth from './Pages/Login_Registration/RequreAuth';
 import AddProduct from './Pages/AddProduct/AddProduct';
+import Blogs from './Pages/Blogs/Blogs';
+import Page_404 from './Pages/404_page/Page_404';
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
           <Route path='/addProduct' element={<RequreAuth><AddProduct></AddProduct></RequreAuth>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/registration' element={<Registration></Registration>}></Route>
+          <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+          <Route path='*' element={<Page_404></Page_404>}></Route>
           
 
         </Routes>
