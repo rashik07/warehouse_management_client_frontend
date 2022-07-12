@@ -22,6 +22,9 @@ const Headers = () => {
           <Link to="/manage">Manage Inventories</Link>
         </Menu.Item>
         <Menu.Item>
+          <Link to="/addProduct">Add Items</Link>
+        </Menu.Item>
+        <Menu.Item>
           <Link to="/blogs">Blogs</Link>
         </Menu.Item>
         {user ? (

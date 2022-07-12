@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Checkbox, Form, Input, Layout } from "antd";
+import { Button, Skeleton, Form, Input, Layout } from "antd";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
@@ -13,12 +13,15 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+    if(loading) {
+      return <Skeleton />;
+     }
+   
+
   if (user) {
     navigate(from, { replace: true });
   }
-  // if (user) {
-  //     navigate(from, { replace: true });
-  // }
+
 
   if (error) {
     errorElement = <p style={{ color: "red" }}>Error: {error?.message}</p>;
@@ -31,6 +34,8 @@ const Login = () => {
   const onFinish = (values) => {
     signInWithEmailAndPassword(values.email, values.password);
     console.log("Success:", values);
+ 
+
   };
 
   const onFinishFailed = (errorInfo) => {

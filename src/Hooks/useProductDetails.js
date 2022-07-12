@@ -4,7 +4,7 @@ const useProductDetails = product_id =>{
     const [product, setProduct] = useState({});
 
     useEffect( () =>{
-        const url = `http://localhost:5000/products/${product_id}`;
+        const url = `https://floating-spire-21538.herokuapp.com/products/${product_id}`;
         fetch(url)
         .then(res=> res.json())
         .then(data => setProduct(data));

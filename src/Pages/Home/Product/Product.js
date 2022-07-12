@@ -9,7 +9,7 @@ const Product = ({ product }) => {
   const { Meta } = Card;
     const navigate = useNavigate();
   const navigateToProductDetail= (id) => {
-    navigate(`/productDetails/${id}`)
+    navigate(`/inventory/${id}`)
   }
   return (
     <Col  xs={{ span: 20 }} lg={{ span: 6, offset: 2 }} style={{marginBottom:"10px"}}>

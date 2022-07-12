@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 
 
-import { Button, Checkbox, Form, Input, Layout } from "antd";
+import { Button, Skeleton, Form, Input, Layout } from "antd";
 import auth from '../../firebase.init';
 
 
@@ -19,10 +19,9 @@ const Registration = () => {
    
     const navigate = useNavigate();
 
-    const navigateLogin = () => {
-        navigate('/login');
-    }
-
+    if(loading) {
+      return <Skeleton />;
+     }
 
     if (user) {
         navigate('/home');

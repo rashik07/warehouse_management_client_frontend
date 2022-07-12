@@ -7,14 +7,14 @@ const ManageInventory = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://floating-spire-21538.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, []);
+  }, [products]);
 
   const handleDelete = (id) => {
     console.log(id);
-    const url = `http://localhost:5000/products/${id}`;
+    const url = `https://floating-spire-21538.herokuapp.com/products/${id}`;
     fetch(url, {
       method: "DELETE",
     })
