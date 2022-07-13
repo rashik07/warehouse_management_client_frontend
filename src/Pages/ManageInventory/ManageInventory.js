@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Button, Divider, Popconfirm, Table } from "antd";
 import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ManageInventory = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+  const navigateToProductDetail= (id) => {
+    navigate(`/inventory/${id}`)
+  }
 
   useEffect(() => {
     fetch("https://floating-spire-21538.herokuapp.com/products")
@@ -42,11 +46,36 @@ const ManageInventory = () => {
         products.length >= 1 ? (
           <Popconfirm
             title="Sure to delete?"
+            onClick={() => navigateToProductDetail(record._id)}
+          >
+            <a>View</a>
+           
+            
+          </Popconfirm>
+        
+     
+          
+        ) : null,
+        
+    },
+    {
+      title: "operation",
+      dataIndex: "operation",
+      render: (_, record) =>
+        products.length >= 1 ? (
+          <Popconfirm
+            title="Sure to delete?"
             onConfirm={() => handleDelete(record._id)}
           >
             <a>Delete</a>
+           
+            
           </Popconfirm>
+        
+     
+          
         ) : null,
+        
     },
   ];
   const { Header, Content, Footer, Sider } = Layout;

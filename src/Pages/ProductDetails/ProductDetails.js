@@ -2,7 +2,7 @@ import { Button } from "antd/lib/radio";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useProductDetails from "../../Hooks/useProductDetails";
-import { Layout, Row,Col } from "antd";
+import { Layout, Row,Col, Image } from "antd";
 const ProductDetails = () => {
   const { product_id } = useParams();
   const [product] = useProductDetails(product_id);
@@ -73,8 +73,13 @@ const ProductDetails = () => {
               height: "100vh",
             }}
           >
+            
+            <Image width={200} src={product.img}></Image>
+      
             <h2>Product Name: {product.name}</h2>
             <p>Product Quantity: {product.quantity}</p>
+            <p>Product Price: {product.price}</p>
+            <p>Product Discription: {product.description}</p>
             <br />
             <Button onClick={() => handleUpdateProduct()}>Delivered</Button>
 
