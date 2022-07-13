@@ -25,6 +25,9 @@ const Headers = () => {
           <Link to="/addProduct">Add Items</Link>
         </Menu.Item>
         <Menu.Item>
+          <Link to="/myitems">My Items</Link>
+        </Menu.Item>
+        <Menu.Item>
           <Link to="/blogs">Blogs</Link>
         </Menu.Item>
         {user ? (

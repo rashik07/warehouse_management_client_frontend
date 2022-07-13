@@ -15,6 +15,7 @@ import RequreAuth from './Pages/Login_Registration/RequreAuth';
 import AddProduct from './Pages/AddProduct/AddProduct';
 import Blogs from './Pages/Blogs/Blogs';
 import Page_404 from './Pages/404_page/Page_404';
+import MyItems from './Pages/MyItems/MyItems';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/addProduct' element={<RequreAuth><AddProduct></AddProduct></RequreAuth>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/registration' element={<Registration></Registration>}></Route>
+          <Route path='/myitems' element={<MyItems></MyItems>}></Route>
           <Route path='/blogs' element={<Blogs></Blogs>}></Route>
           <Route path='*' element={<Page_404></Page_404>}></Route>
           

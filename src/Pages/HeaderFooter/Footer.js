@@ -9,6 +9,7 @@ const Footer = () => {
           background:"#001529",
           color: "white"
         }}
+        className="footer"
       >
         Ant Design ©2018 Created by Ant UED
       </Footer>

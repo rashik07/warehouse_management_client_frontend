@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Button, Divider, Popconfirm, Table } from "antd";
 import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
 
-const ManageInventory = () => {
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+
+const MyItems = () => {
+  const [user, loading] = useAuthState(auth);
   const [products, setProducts] = useState([]);
-
+  const email = user?.email;
+  console.log(email);
   useEffect(() => {
-    fetch("https://floating-spire-21538.herokuapp.com/products")
+    fetch(`https://floating-spire-21538.herokuapp.com/products/`)
       .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, [products]);
+      .then((data) => {
+   
+        const remaining = data.filter((product) => product.email == email);
+        setProducts(remaining);
+        console.log(remaining);
+      });
+  }, [user]);
 
   const handleDelete = (id) => {
     console.log(id);
@@ -26,7 +35,6 @@ const ManageInventory = () => {
       });
   };
   const columns = [
-   
     {
       title: "Name",
       dataIndex: "name",
@@ -34,6 +42,10 @@ const ManageInventory = () => {
     {
       title: "Quantity",
       dataIndex: "quantity",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
     },
     {
       title: "operation",
@@ -50,6 +62,7 @@ const ManageInventory = () => {
     },
   ];
   const { Header, Content, Footer, Sider } = Layout;
+
   return (
     <div>
       <Layout className="site-layout">
@@ -64,13 +77,10 @@ const ManageInventory = () => {
             style={{
               padding: 24,
               textAlign: "center",
-         
             }}
           >
-            <h1>All Products</h1>
-            <Button type="primary" style={{ float: "right", margin: "10px" }}>
-              <Link to="/addProduct">Add Product</Link>
-            </Button>
+            <h1>My Products:{products.length}</h1>
+
             <Table columns={columns} dataSource={products} />
           </div>
         </Content>
@@ -79,4 +89,4 @@ const ManageInventory = () => {
   );
 };
 
-export default ManageInventory;
+export default MyItems;
